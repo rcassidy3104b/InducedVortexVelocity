@@ -9,11 +9,15 @@ int main() {
     Vector3 trk = (nd - st).norm();
 
     Vector3 pt;
-
-    for (int i = 0; i <= 40; i++) {
+   /* for (int i = 0; i <= 1; i++) {
         pt = st + (trk * i);
+        std::cout << pt.toStr() << std::endl;
         std::cout << ((myFilament.inducedVel(pt)).toStr())<<std::endl;
-    }
+    }*/
+    pt = Vector3(0, 5, 0);
+    std::cout << ((myFilament.inducedVel(pt)).toStr()) << std::endl;
+    pt = Vector3(20, 5, 0);
+    std::cout << ((myFilament.inducedVel(pt)).toStr()) << std::endl;
 
     return 0;
 }
