@@ -15,12 +15,19 @@ Vector3::Vector3(float iX, float iY, float iZ)
 	x = iX;
 	y = iY;
 	z = iZ;
-	magnitude = sqrt(x * x + y * y + z * z);;
+	magChange();
 }
+
+
 
 float Vector3::mag()
 {
 	return magnitude;
+}
+
+Vector3 Vector3::norm()
+{
+	return Vector3(x/magnitude, y/magnitude, z/magnitude);
 }
 
 float Vector3::dot(Vector3 const& obj)
@@ -33,24 +40,21 @@ Vector3 Vector3::cross(Vector3 const& obj)
 	return Vector3(y * obj.z - z * obj.y, z * obj.x - x * obj.z, x * obj.y - y * obj.x);
 }
 
+void Vector3::magChange()
+{
+	magnitude = sqrt(x * x + y * y + z * z);
+}
+
 
 
 Vector3 Vector3::operator+(Vector3 const& obj)
 {
-	Vector3 res;
-	res.x = x + obj.x;
-	res.y = y + obj.y;
-	res.z = z + obj.z;
-	return res;
+	return Vector3(x + obj.x, y + obj.y, z + obj.z);
 }
 
 Vector3 Vector3::operator-(Vector3 const& obj)
 {
-	Vector3 res;
-	res.x = x - obj.x;
-	res.y = y - obj.y;
-	res.z = z - obj.z;
-	return res;
+	return Vector3(x - obj.x, y - obj.y, z - obj.z);
 }
 
 Vector3 Vector3::operator/(float const& obj)
@@ -65,5 +69,5 @@ Vector3 Vector3::operator*(float const& obj)
 
 std::string Vector3::toStr()
 {
-	return "["+std::to_string(std::trunc(100 * x) / 100) + "," + std::to_string(std::trunc(100 * y) / 100) +","+ std::to_string(std::trunc(100 * z) / 100) +"]";
+	return std::to_string(std::trunc(100 * x) / 100) + "," + std::to_string(std::trunc(100 * y) / 100) +","+ std::to_string(std::trunc(100 * z) / 100);
 }

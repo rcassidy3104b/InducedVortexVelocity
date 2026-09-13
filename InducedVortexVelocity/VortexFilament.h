@@ -30,6 +30,7 @@ public:
 	VortexFilament(float x1, float y1, float z1, float x2, float y2, float z2, float str);
     VortexFilament(Vector3 st, Vector3 nd, float str);
 
+
 	Vector3 inducedVel(Vector3 r);
 
     std::string toStr();
