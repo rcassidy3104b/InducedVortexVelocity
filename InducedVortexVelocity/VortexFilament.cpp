@@ -1,6 +1,4 @@
 #include "VortexFilament.h"
-#include <cmath>
-#include <iostream>
 
 VortexFilament::VortexFilament()
 {
@@ -29,11 +27,10 @@ Vector3 VortexFilament::inducedVel(Vector3 r)
 	Vector3 b = end - r;
 	Vector3 axb = a.cross(b);
 	Vector3 q = (axb / (axb.dot(axb))) * (a.mag() + b.mag()) * (1 - (a.dot(b) / (a.mag() * b.mag())));
-	std::cout << "a " << a.toStr() << "\n" << "b " << b.toStr() << "\n" << "axb " << axb.toStr() << "\n" << "q " << q.toStr() << std::endl;
-	return q* (0.07957747154* strength);
+	return q* (0.07957747154*strength);
 }
 
 std::string VortexFilament::toStr()
 {
-	return "Start: "+ start.toStr()+"\nEnd:" + end.toStr()+"\nStrength:"+ std::to_string(std::trunc(100 * strength) / 100);
+	return "Start: "+ start.toStr()+"\nEnd:" + end.toStr()+"\nStrength:"+ std::to_string(strength);
 }

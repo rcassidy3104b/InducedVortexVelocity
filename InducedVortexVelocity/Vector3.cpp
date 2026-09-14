@@ -45,8 +45,6 @@ void Vector3::magChange()
 	magnitude = sqrt(x * x + y * y + z * z);
 }
 
-
-
 Vector3 Vector3::operator+(Vector3 const& obj)
 {
 	return Vector3(x + obj.x, y + obj.y, z + obj.z);
@@ -69,5 +67,6 @@ Vector3 Vector3::operator*(float const& obj)
 
 std::string Vector3::toStr()
 {
-	return std::to_string(std::trunc(100 * x) / 100) + "," + std::to_string(std::trunc(100 * y) / 100) +","+ std::to_string(std::trunc(100 * z) / 100);
+	return std::format("{:.4g}", x) + "," + std::format("{:.4g}", y) + "," + std::format("{:.4g}", z);
+
 }
